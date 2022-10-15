@@ -18,3 +18,35 @@ function findElementPosition(arr, target) {
     let flatPosition = arr.flat().indexOf(target)
     return [Math.floor(flatPosition/arr.length), flatPosition % arr.length]
 }
+
+// If you'd like functions to plug into the @huntoberTweets sliding puzzle codepen that work:
+// (Replace the moveBlankUp and moveBlankDown with these three functions:)
+
+function moveBlankUp(curGrid, blankGrid) {
+    if (curGrid[0].includes(blankGrid)) return curGrid;
+    const position = findBlankPosition(curGrid, blankGrid)
+
+    let temp = curGrid[position[0]][position[1]]
+    curGrid[position[0]][position[1]] = curGrid[position[0]-1][position[1]]
+    curGrid[position[0]-1][position[1]] = temp
+    
+    checkWin(gridWithBlank, curGrid)
+    return curGrid
+}    
+
+function moveBlankDown(curGrid, blankGrid) {
+    if (curGrid[curGrid.length-1].includes(blankGrid)) return curGrid;
+    const position = findBlankPosition(curGrid, blankGrid)
+    
+    let temp = curGrid[position[0]][position[1]]
+    curGrid[position[0]][position[1]] = curGrid[position[0]+1][position[1]]
+    curGrid[position[0]+1][position[1]] = temp
+    
+    checkWin(gridWithBlank, curGrid)
+    return curGrid
+}
+ 
+function findBlankPosition(curGrid, blankGrid) {
+    let flatPosition = curGrid.flat().indexOf(blankGrid)
+    return [Math.floor(flatPosition/curGrid.length), flatPosition % curGrid.length]
+}

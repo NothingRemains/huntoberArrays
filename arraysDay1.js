@@ -8,3 +8,10 @@ function compareArrays(arr1, arr2) {
 }
 
 // Also: could do the same thing with JSON.stringify(a) === JSON.stringify(b)
+
+// If you'd like functions to plug into the @huntoberTweets sliding puzzle codepen that work:
+// (Replace the Day 1 function with this function:)
+
+function checkWin(arr1, arr2) {
+	setIsWin(arr1.flat().join("") === arr2.flat().join(""))
+}

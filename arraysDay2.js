@@ -20,3 +20,30 @@ function moveRight(input, arr) {
 }
 
 // NOTE: could also be done with two splices, one to extract, one to insert (or a nested splice).
+
+// If you'd like functions to plug into the @huntoberTweets sliding puzzle codepen that work:
+// (Replace the moveBlankLeft and moveBlankRight with these two functions:)
+
+function moveBlankLeft(curGrid, blankChar) {
+	if (curGrid.indexOf(blankChar) === 0) return curGrid;
+  let index = curGrid.indexOf(blankChar)
+
+  let temp = curGrid[index-1]
+  curGrid[index-1] = curGrid[index]
+  curGrid[index] = temp
+  
+  checkWin(gridWithBlank, curGrid)
+	return curGrid
+}
+    
+ function moveBlankRight(curGrid, blankChar) {
+    if (curGrid.indexOf(blankChar) === curGrid.length-1) return curGrid;
+    let index = curGrid.indexOf(blankChar)
+
+    let temp = curGrid[index+1]
+    curGrid[index+1] = curGrid[index]
+    curGrid[index] = temp
+
+    checkWin(gridWithBlank, curGrid)
+    return curGrid
+}
